@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Generador de iconos — Control de Gastos</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; color: #1A1F2B; }
+    h1 { font-size: 1.4rem; }
+    .icon-row { display: flex; gap: 2rem; align-items: flex-start; margin: 1.5rem 0; flex-wrap: wrap; }
+    .icon-block { text-align: center; }
+    canvas { display: block; margin: 0.5rem auto; border: 1px solid #E5E7EB; border-radius: 8px; }
+    button { display: block; margin: 0.5rem auto 0; padding: 10px 20px; font: inherit; font-weight: 600;
+             background: #2F6FED; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+    button:hover { filter: brightness(1.05); }
+    button:active { filter: brightness(0.95); }
+    p.note { color: #6B7280; font-size: 0.9rem; line-height: 1.5; }
+    code { background: #F7F8FA; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <h1>Generador de iconos</h1>
+  <p class="note">
+    Esta página genera los dos iconos PNG que la PWA necesita. El fondo
+    es <strong>teal (#0D9488)</strong>, distinto del azul del tema
+    (<code>#2F6FED</code>) — esto es intencional para que el icono se
+    distinga de la barra de direcciones del navegador.
+  </p>
+  <p class="note">
+    Hacé clic en cada botón para descargar el PNG, y guardalo en
+    <code>app/icons/</code>.
+  </p>
+
+  <div class="icon-row">
+    <div class="icon-block">
+      <canvas id="c192" width="192" height="192" style="width:192px;height:192px"></canvas>
+      <button id="dl192">Descargar icon-192.png</button>
+    </div>
+    <div class="icon-block">
+      <canvas id="c512" width="512" height="512" style="width:256px;height:256px"></canvas>
+      <button id="dl512">Descargar icon-512.png</button>
+    </div>
+  </div>
+
+  <p class="note">
+    Los botones abren el PNG en una nueva pestaña. Clic derecho →
+    "Guardar imagen como…" → guardá el archivo como
+    <code>icon-192.png</code> o <code>icon-512.png</code> dentro de
+    <code>app/icons/</code>.
+  </p>
+
+  <script>
+    var TEAL = "#0D9488";
+    var WHITE = "#FFFFFF";
+    var SIZES = [192, 512];
+
+    function drawIcon(canvas) {
+      var ctx = canvas.getContext("2d");
+      var w = canvas.width;
+      var h = canvas.height;
+
+      // Background
+      ctx.fillStyle = TEAL;
+      ctx.fillRect(0, 0, w, h);
+
+      // "€" glyph centered, ~42% of icon height
+      ctx.fillStyle = WHITE;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = "bold " + Math.round(w * 0.42) + "px sans-serif";
+      ctx.fillText("\u20AC", w / 2, h / 2 + w * 0.02);
+    }
+
+    // Draw both canvases
+    SIZES.forEach(function(size) {
+      var canvas = document.getElementById("c" + size);
+      drawIcon(canvas);
+    });
+
+    // Download helpers
+    function setupDownload(canvasId, filename) {
+      var btn = document.getElementById("dl" + canvasId.replace("c", ""));
+      btn.addEventListener("click", function() {
+        var canvas = document.getElementById(canvasId);
+        canvas.toBlob(function(blob) {
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+        }, "image/png");
+      });
+    }
+
+    setupDownload("c192", "icon-192.png");
+    setupDownload("c512", "icon-512.png");
+  </script>
+</body>
+</html>
