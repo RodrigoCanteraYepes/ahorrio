@@ -3,7 +3,7 @@
 // Pure render: re-invoke on every route change. ES module.
 
 import { loadAllCategories } from "../categories.js";
-import { parseEURInput, formatEUR, formatDateES } from "../format.js";
+import { parseEURInput, formatEUR } from "../format.js";
 import { loadTransactions, updateTransaction } from "../storage.js";
 import { navigate, currentRoute } from "../router.js";
 

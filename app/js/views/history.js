@@ -100,7 +100,7 @@ export function renderHistoryView(root) {
  * @returns {MonthData[]}
  */
 function aggregateMonths(txs) {
-  /** @type {Map<string, { income: number, expenses: number, count: number }>}> */
+  /** @type {Map<string, { income: number, expenses: number, count: number }>} */
   const map = new Map();
 
   for (const tx of txs) {

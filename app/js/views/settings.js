@@ -1,7 +1,7 @@
 // Settings view. Export/Import data + Budget configuration.
 // Pure render: re-invoke on every route change. ES module.
 
-import { loadAllCategories, getCategoryById } from "../categories.js";
+import { loadAllCategories } from "../categories.js";
 import { formatEUR, parseEURInput, todayISO } from "../format.js";
 import { loadTransactions, saveTransaction, loadUIState, loadBudgets, saveBudget } from "../storage.js";
 import { navigate } from "../router.js";

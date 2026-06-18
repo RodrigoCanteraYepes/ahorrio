@@ -7,7 +7,7 @@
 // element and rebuild; that is cheap (a dozen DOM nodes for v0.1)
 // and keeps the code path linear and easy to follow.
 
-import { currentRoute, navigate, notify, onRouteChange } from "./router.js";
+import { currentRoute, navigate, onRouteChange } from "./router.js";
 import { loadUIState, loadTransactions } from "./storage.js";
 import { renderDashboard } from "./views/dashboard.js";
 import { renderAddView } from "./views/add.js";
