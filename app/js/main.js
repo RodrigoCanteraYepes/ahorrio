@@ -84,7 +84,7 @@ function boot() {
     }
   }
 
-  console.info("control-gastos: boot ok");
+  console.info("ahorrio: boot ok");
 }
 
 if (document.readyState === "loading") {
@@ -95,5 +95,5 @@ if (document.readyState === "loading") {
 
 // Expose for manual verification in the DevTools console.
 if (typeof window !== "undefined") {
-  window.__cg_app = { mount, navigate, notify };
+  window.__cg_app = { mount, navigate };
 }
