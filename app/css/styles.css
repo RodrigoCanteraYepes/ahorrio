@@ -36,8 +36,8 @@ h1, h2, h3, h4, p { margin: 0; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* Global transition for interactive elements */
-button, a, input, select, .btn, .fab, .tx-item, .totals-card, .chart-section, .budget-section, .month-selector {
-  transition: all 0.2s ease;
+.btn, .fab, .tx-item, .totals-card, .chart-section, .budget-section, .month-selector {
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 /* ------------------------------------------------------------------ */
