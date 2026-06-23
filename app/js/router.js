@@ -64,8 +64,9 @@ export function navigate(name, params) {
     if (qs) hash += `?${qs}`;
   }
   if (typeof location === "undefined") return;
-  if (location.hash === hash) { notify(currentRoute()); return; } // same hash: re-fire
   location.hash = hash;
+  // Always notify directly — hashchange doesn't fire reliably in Cordova WebView
+  notify(currentRoute());
 }
 
 // Manual verification helper for the user (no test runner).

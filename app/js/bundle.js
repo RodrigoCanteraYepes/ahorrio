@@ -46,11 +46,8 @@
       if (qs) hash += `?${qs}`;
     }
     if (typeof location === "undefined") return;
-    if (location.hash === hash) {
-      notify(currentRoute());
-      return;
-    }
     location.hash = hash;
+    notify(currentRoute());
   }
   if (typeof window !== "undefined") {
     window.__cg_router = { currentRoute, navigate, onRouteChange };
@@ -638,6 +635,14 @@
       const remainingClass = `budget-row__remaining budget-row__remaining--${tone}`;
       const remainingText = remaining >= 0 ? `quedan ${formatEUR(remaining)}` : `te pasaste ${formatEUR(Math.abs(remaining))}`;
       row.appendChild(el("span", remainingClass, remainingText));
+      const delBtn = el("button", "budget-row__delete", "\u2715");
+      delBtn.type = "button";
+      delBtn.setAttribute("aria-label", `Eliminar presupuesto de ${cat.name}`);
+      delBtn.addEventListener("click", () => {
+        deleteBudget(monthKey, catId);
+        renderDashboard(root);
+      });
+      row.appendChild(delBtn);
       budgetSection.appendChild(row);
     }
     const addBudgetBtn = el("button", "budget-add-btn", "+ A\xF1adir presupuesto");

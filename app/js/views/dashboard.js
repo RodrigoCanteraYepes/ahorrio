@@ -5,7 +5,7 @@
 import { getCategoryById, loadAllCategories, saveCustomCategory, deleteCategory, restoreHiddenCategories } from "../categories.js";
 import { computeTotals, groupByCategory } from "../totals.js";
 import { formatDateES, formatEUR, parseEURInput } from "../format.js";
-import { deleteTransaction, loadTransactions, loadUIState, saveUIState, loadBudgets, saveBudget } from "../storage.js";
+import { deleteTransaction, loadTransactions, loadUIState, saveUIState, loadBudgets, saveBudget, deleteBudget } from "../storage.js";
 import { navigate } from "../router.js";
 import { renderMonthSelector, monthLabel } from "./month-selector.js";
 
@@ -186,6 +186,16 @@ function renderBudgetSection(screen, monthKey, byCatForBudget, root) {
       ? `quedan ${formatEUR(remaining)}` 
       : `te pasaste ${formatEUR(Math.abs(remaining))}`;
     row.appendChild(el("span", remainingClass, remainingText));
+
+    // Delete button
+    const delBtn = el("button", "budget-row__delete", "\u2715");
+    delBtn.type = "button";
+    delBtn.setAttribute("aria-label", `Eliminar presupuesto de ${cat.name}`);
+    delBtn.addEventListener("click", () => {
+      deleteBudget(monthKey, catId);
+      renderDashboard(root);
+    });
+    row.appendChild(delBtn);
 
     budgetSection.appendChild(row);
   }

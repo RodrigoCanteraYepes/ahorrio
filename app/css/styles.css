@@ -845,6 +845,8 @@ main#app > * { max-width: 640px; margin: 0 auto; padding: 0 var(--space-3); }
 .budget-row__remaining--ok { color: var(--income); }
 .budget-row__remaining--warning { color: var(--warning); }
 .budget-row__remaining--danger { color: var(--expense); }
+.budget-row__delete { background: transparent; border: 1px solid var(--border); color: var(--expense); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 12px; cursor: pointer; margin-left: var(--space-2); }
+.budget-row__delete:hover { background: var(--expense-light); }
 
 /* Budget inline add form */
 .budget-add-form {
