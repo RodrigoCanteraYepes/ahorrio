@@ -1780,6 +1780,9 @@
       }
     }
     onRouteChange((route) => mount(root, route));
+    window.addEventListener("hashchange", () => {
+      notify(currentRoute());
+    });
     mount(root, currentRoute());
     if ("serviceWorker" in navigator) {
       try {

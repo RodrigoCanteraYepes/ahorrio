@@ -7,7 +7,7 @@
 // element and rebuild; that is cheap (a dozen DOM nodes for v0.1)
 // and keeps the code path linear and easy to follow.
 
-import { currentRoute, navigate, onRouteChange } from "./router.js";
+import { currentRoute, navigate, notify, onRouteChange } from "./router.js";
 import { loadUIState, loadTransactions } from "./storage.js";
 import { renderDashboard } from "./views/dashboard.js";
 import { renderAddView } from "./views/add.js";
@@ -66,6 +66,11 @@ function boot() {
 
   // Wire the router: every hashchange re-mounts the right view.
   onRouteChange((route) => mount(root, route));
+
+  // Listen for hash changes and notify the router
+  window.addEventListener("hashchange", () => {
+    notify(currentRoute());
+  });
 
   // Initial render based on the (now normalized) current route.
   mount(root, currentRoute());
