@@ -1,4 +1,4 @@
-// Add Transaction view for v0.1. Pure render: it owns the form, but
+﻿// Add Transaction view for v0.1. Pure render: it owns the form, but
 // delegates persistence to storage.js and navigation to router.js.
 // main.js re-mounts this view on every navigation; we do not run a
 // diff (same trade-off as dashboard.js).
@@ -38,7 +38,7 @@ export function renderAddView(root) {
 
   // header
   const back = h("button", { className: "add-view__back", type: "button", "aria-label": "Volver al inicio" }, "\u2190 Atr\u00e1s");
-  back.addEventListener("click", (ev) => { ev.preventDefault(); navigate("dashboard"); });
+  back.addEventListener("click", () => { navigate("dashboard"); });
   const title = h("h1", { className: "add-view__title", id: "add-title" }, "A\u00f1adir transacci\u00f3n");
   screen.appendChild(h("header", { className: "add-view__header" }, [back, title]));
 
@@ -51,7 +51,7 @@ export function renderAddView(root) {
   for (const opt of /** @type {const} */ (["Gasto", "Ingreso"])) {
     const b = h("button", { className: "segmented__option", type: "button", "aria-pressed": opt === tipo ? "true" : "false", dataset: { tipo: opt } }, opt);
     if (opt === tipo) b.classList.add("segmented__option--active");
-    b.addEventListener("click", (ev) => { ev.preventDefault(); setTipo(opt); });
+    b.addEventListener("click", () => { setTipo(opt); });
     seg.appendChild(b);
     segBtns.push({ value: opt, node: b });
   }
@@ -83,10 +83,10 @@ export function renderAddView(root) {
   const saveBtn = h("button", { className: "btn btn--primary add-view__save", type: "button" }, "Guardar");
   saveBtn.disabled = true;
   const cancelBtn = h("button", { className: "btn btn--secondary add-view__cancel", type: "button" }, "Cancelar");
-  cancelBtn.addEventListener("click", (ev) => { ev.preventDefault(); navigate("dashboard"); });
+  cancelBtn.addEventListener("click", () => { navigate("dashboard"); });
   form.appendChild(h("div", { className: "add-view__actions" }, [saveBtn, cancelBtn]));
 
-  saveBtn.addEventListener("click", (ev) => { ev.preventDefault(); if (!saveBtn.disabled) handleSave(); });
+  saveBtn.addEventListener("click", () => { if (!saveBtn.disabled) handleSave(); });
   screen.appendChild(form);
   root.appendChild(screen);
 

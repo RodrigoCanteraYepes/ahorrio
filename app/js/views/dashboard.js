@@ -1,4 +1,4 @@
-// Dashboard view for v0.1. Renders the main screen: header, month
+﻿// Dashboard view for v0.1. Renders the main screen: header, month
 // selector, totals card, pie chart by category, transaction list.
 // Pure render: re-invoke on every route change. ES module.
 
@@ -33,7 +33,7 @@ export function renderDashboard(root) {
   const addBtn = el("button", "fab", "+ A\u00f1adir");
   addBtn.type = "button";
   addBtn.setAttribute("aria-label", "A\u00f1adir transacci\u00f3n");
-  addBtn.addEventListener("click", (ev) => { ev.preventDefault(); navigate("add"); });
+  addBtn.addEventListener("click", () => { navigate("add"); });
 
   const hamburgerBtn = el("button", "hamburger-btn", "\u2630");
   hamburgerBtn.type = "button";
@@ -117,7 +117,7 @@ export function renderDashboard(root) {
     empty.appendChild(el("p", "empty-state__title", "A\u00fan no hay movimientos este mes"));
     const cta = el("button", "btn btn--primary empty-state__cta", "+ A\u00f1adir transacci\u00f3n");
     cta.type = "button";
-    cta.addEventListener("click", (ev) => { ev.preventDefault(); navigate("add"); });
+    cta.addEventListener("click", () => { navigate("add"); });
     empty.appendChild(cta);
     screen.appendChild(empty);
   } else {
@@ -132,9 +132,7 @@ export function renderDashboard(root) {
   screen.appendChild(menuPanel.overlay);
   screen.appendChild(menuPanel.panel);
 
-  hamburgerBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    menuPanel.open();
+  hamburgerBtn.addEventListener("click", () => { menuPanel.open();
   });
 
   root.appendChild(screen);
@@ -195,9 +193,7 @@ function renderBudgetSection(screen, monthKey, byCatForBudget, root) {
   // Add budget button
   const addBudgetBtn = el("button", "budget-add-btn", "+ A\u00f1adir presupuesto");
   addBudgetBtn.type = "button";
-  addBudgetBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    // Toggle inline form
+  addBudgetBtn.addEventListener("click", () => { // Toggle inline form
     const existingForm = budgetSection.querySelector(".budget-add-form");
     if (existingForm) {
       existingForm.remove();
@@ -243,9 +239,7 @@ function createBudgetAddForm(monthKey, root, allCats, existingBudgets) {
   // Save button
   const saveBtn = el("button", "budget-add-form__btn", "Guardar");
   saveBtn.type = "button";
-  saveBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    const catId = select.value;
+  saveBtn.addEventListener("click", () => { const catId = select.value;
     if (!catId) return;
     const cents = parseEURInput(input.value);
     if (cents === null || cents <= 0) return;
@@ -299,9 +293,7 @@ function txItem(tx, root) {
   editBtn.type = "button";
   editBtn.textContent = "Editar";
   editBtn.setAttribute("aria-label", `Editar ${cat.name} de ${formatEUR(tx.amountCents)}`);
-  editBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    navigate("edit", { id: tx.id });
+  editBtn.addEventListener("click", () => { navigate("edit", { id: tx.id });
   });
   actions.appendChild(editBtn);
 
@@ -309,9 +301,7 @@ function txItem(tx, root) {
   del.type = "button";
   del.textContent = "Borrar";
   del.setAttribute("aria-label", `Borrar ${cat.name} de ${formatEUR(tx.amountCents)}`);
-  del.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    if (!window.confirm("\u00bfBorrar este movimiento?")) return;
+  del.addEventListener("click", () => { if (!window.confirm("\u00bfBorrar este movimiento?")) return;
     deleteTransaction(tx.id);
     renderDashboard(root);
   });
@@ -423,9 +413,7 @@ function createMenuPanel(root) {
   const historySection = el("div", "menu-section");
   const historyLink = el("button", "menu-section__link", "Ver historial mensual");
   historyLink.type = "button";
-  historyLink.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    close();
+  historyLink.addEventListener("click", () => { close();
     navigate("history");
   });
   historySection.appendChild(el("h3", "menu-section__title", "Historial mensual"));
@@ -436,9 +424,7 @@ function createMenuPanel(root) {
   const settingsSection = el("div", "menu-section");
   const settingsLink = el("button", "menu-section__link", "Configuraci\u00f3n");
   settingsLink.type = "button";
-  settingsLink.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    close();
+  settingsLink.addEventListener("click", () => { close();
     navigate("settings");
   });
   settingsSection.appendChild(el("h3", "menu-section__title", "Ajustes"));
@@ -449,9 +435,7 @@ function createMenuPanel(root) {
   const dangerSection = el("div", "menu-section");
   const clearBtn = el("button", "menu-section__danger-btn", "Borrar todos los datos");
   clearBtn.type = "button";
-  clearBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    if (!window.confirm("\u00bfEst\u00e1s seguro? Se borrar\u00e1n TODOS los datos. Esta acci\u00f3n no se puede deshacer.")) return;
+  clearBtn.addEventListener("click", () => { if (!window.confirm("\u00bfEst\u00e1s seguro? Se borrar\u00e1n TODOS los datos. Esta acci\u00f3n no se puede deshacer.")) return;
     localStorage.clear();
     close();
     renderDashboard(root);
@@ -494,9 +478,7 @@ function createMenuPanel(root) {
       const delBtn = el("button", "category-item__delete", "\u2715");
       delBtn.type = "button";
       delBtn.setAttribute("aria-label", `Eliminar ${cat.name}`);
-      delBtn.addEventListener("click", (ev) => {
-        ev.preventDefault();
-        if (!window.confirm(`\u00bfEliminar la categor\u00eda "${cat.name}"?`)) return;
+      delBtn.addEventListener("click", () => { if (!window.confirm(`\u00bfEliminar la categor\u00eda "${cat.name}"?`)) return;
         deleteCategory(cat.id);
         renderCategoryList();
       });
@@ -507,18 +489,14 @@ function createMenuPanel(root) {
     // Restore hidden defaults button
     const restoreBtn = el("button", "category-restore-btn", "Restaurar categor\u00edas por defecto");
     restoreBtn.type = "button";
-    restoreBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
-      restoreHiddenCategories();
+    restoreBtn.addEventListener("click", () => { restoreHiddenCategories();
       renderCategoryList();
     });
     catList.appendChild(restoreBtn);
   }
 
   // Add category handler
-  addCatBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    const name = nameInput.value.trim();
+  addCatBtn.addEventListener("click", () => { const name = nameInput.value.trim();
     if (!name) return;
     const type = typeSelect.value;
     const id = name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
@@ -530,8 +508,8 @@ function createMenuPanel(root) {
   });
 
   // Close handlers
-  closeBtn.addEventListener("click", (ev) => { ev.preventDefault(); close(); });
-  overlay.addEventListener("click", (ev) => { ev.preventDefault(); close(); });
+  closeBtn.addEventListener("click", () => { close(); });
+  overlay.addEventListener("click", () => { close(); });
 
   return { overlay, panel, open, close };
 }

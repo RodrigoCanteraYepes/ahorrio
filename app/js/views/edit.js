@@ -1,4 +1,4 @@
-// Edit Transaction view. Similar to add.js but pre-fills form with
+﻿// Edit Transaction view. Similar to add.js but pre-fills form with
 // existing transaction data and calls updateTransaction on save.
 // Pure render: re-invoke on every route change. ES module.
 
@@ -33,7 +33,7 @@ export function renderEditView(root) {
 
   // header
   const back = h("button", { className: "add-view__back", type: "button", "aria-label": "Volver al inicio" }, "\u2190 Atr\u00e1s");
-  back.addEventListener("click", (ev) => { ev.preventDefault(); navigate("dashboard"); });
+  back.addEventListener("click", () => { navigate("dashboard"); });
   const title = h("h1", { className: "add-view__title", id: "edit-title" }, "Editar transacci\u00f3n");
   screen.appendChild(h("header", { className: "add-view__header" }, [back, title]));
 
@@ -46,7 +46,7 @@ export function renderEditView(root) {
   for (const opt of /** @type {const} */ (["Gasto", "Ingreso"])) {
     const b = h("button", { className: "segmented__option", type: "button", "aria-pressed": opt === tipo ? "true" : "false", dataset: { tipo: opt } }, opt);
     if (opt === tipo) b.classList.add("segmented__option--active");
-    b.addEventListener("click", (ev) => { ev.preventDefault(); setTipo(opt); });
+    b.addEventListener("click", () => { setTipo(opt); });
     seg.appendChild(b);
     segBtns.push({ value: opt, node: b });
   }
@@ -78,10 +78,10 @@ export function renderEditView(root) {
   const saveBtn = h("button", { className: "btn btn--primary add-view__save", type: "button" }, "Guardar cambios");
   saveBtn.disabled = false;
   const cancelBtn = h("button", { className: "btn btn--secondary add-view__cancel", type: "button" }, "Cancelar");
-  cancelBtn.addEventListener("click", (ev) => { ev.preventDefault(); navigate("dashboard"); });
+  cancelBtn.addEventListener("click", () => { navigate("dashboard"); });
   form.appendChild(h("div", { className: "add-view__actions" }, [saveBtn, cancelBtn]));
 
-  saveBtn.addEventListener("click", (ev) => { ev.preventDefault(); if (!saveBtn.disabled) handleSave(); });
+  saveBtn.addEventListener("click", () => { if (!saveBtn.disabled) handleSave(); });
   screen.appendChild(form);
   root.appendChild(screen);
 

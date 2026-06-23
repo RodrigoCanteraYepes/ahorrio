@@ -1,4 +1,4 @@
-// Month selector with arrow navigation for v0.1.
+﻿// Month selector with arrow navigation for v0.1.
 // Shows: ← [Month Year] →  [Hoy]
 // Left arrow goes to previous month, right arrow to next.
 // "Hoy" button appears only when viewing a different month than today's.
@@ -63,9 +63,7 @@ export function renderMonthSelector(host, selectedMonthKey, onChange) {
   leftBtn.className = "month-selector__arrow";
   leftBtn.innerHTML = "&#8592;"; // ←
   leftBtn.setAttribute("aria-label", "Mes anterior");
-  leftBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    onChange(previousMonthKey(selectedMonthKey));
+  leftBtn.addEventListener("click", () => { onChange(previousMonthKey(selectedMonthKey));
   });
   wrap.appendChild(leftBtn);
 
@@ -81,9 +79,7 @@ export function renderMonthSelector(host, selectedMonthKey, onChange) {
   rightBtn.className = "month-selector__arrow";
   rightBtn.innerHTML = "&#8594;"; // →
   rightBtn.setAttribute("aria-label", "Mes siguiente");
-  rightBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    onChange(nextMonthKey(selectedMonthKey));
+  rightBtn.addEventListener("click", () => { onChange(nextMonthKey(selectedMonthKey));
   });
   wrap.appendChild(rightBtn);
 
@@ -94,9 +90,7 @@ export function renderMonthSelector(host, selectedMonthKey, onChange) {
     todayBtn.className = "month-selector__today";
     todayBtn.textContent = "Hoy";
     todayBtn.setAttribute("aria-label", "Volver al mes actual");
-    todayBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
-      onChange(todayKey);
+    todayBtn.addEventListener("click", () => { onChange(todayKey);
     });
     wrap.appendChild(todayBtn);
   }

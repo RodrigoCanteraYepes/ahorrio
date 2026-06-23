@@ -1,5 +1,5 @@
 (() => {
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/router.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/router.js
   var DEFAULT_ROUTE = "dashboard";
   var VALID_ROUTES = /* @__PURE__ */ new Set(["dashboard", "add", "history", "edit", "settings"]);
   var handlers = [];
@@ -56,7 +56,7 @@
     window.__cg_router = { currentRoute, navigate, onRouteChange };
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/format.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/format.js
   function formatEUR(cents) {
     const value = (Math.round(cents) / 100).toFixed(2);
     const [intPart, decPart] = value.split(".");
@@ -124,7 +124,7 @@
     window.__cg_format = { formatEUR, parseEURInput, formatDateES, parseDateInput, todayISO };
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/storage.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/storage.js
   var KEY_TX = "cg:v1:transactions";
   var KEY_UI = "cg:v1:ui-state";
   var KEY_BUDGETS = "cg:v1:budgets";
@@ -315,7 +315,7 @@
     };
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/categories.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/categories.js
   var CATEGORIES = Object.freeze([
     Object.freeze({ id: "ocio", name: "Ocio", type: "expense", icon: "\u{1F3AC}", color: "#8B5CF6" }),
     Object.freeze({ id: "compras", name: "Compras", type: "expense", icon: "\u{1F6D2}", color: "#EC4899" }),
@@ -387,7 +387,7 @@
     localStorage.removeItem(KEY_HIDDEN_CATS);
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/totals.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/totals.js
   function computeTotals(transactions, monthKey) {
     let income = 0;
     let expenses = 0;
@@ -418,7 +418,7 @@
     window.__cg_totals = { computeTotals, groupByCategory };
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/views/month-selector.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/views/month-selector.js
   var MONTH_NAMES = [
     "Enero",
     "Febrero",
@@ -471,8 +471,7 @@
     leftBtn.className = "month-selector__arrow";
     leftBtn.innerHTML = "&#8592;";
     leftBtn.setAttribute("aria-label", "Mes anterior");
-    leftBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    leftBtn.addEventListener("click", () => {
       onChange(previousMonthKey(selectedMonthKey));
     });
     wrap.appendChild(leftBtn);
@@ -485,8 +484,7 @@
     rightBtn.className = "month-selector__arrow";
     rightBtn.innerHTML = "&#8594;";
     rightBtn.setAttribute("aria-label", "Mes siguiente");
-    rightBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    rightBtn.addEventListener("click", () => {
       onChange(nextMonthKey(selectedMonthKey));
     });
     wrap.appendChild(rightBtn);
@@ -496,8 +494,7 @@
       todayBtn.className = "month-selector__today";
       todayBtn.textContent = "Hoy";
       todayBtn.setAttribute("aria-label", "Volver al mes actual");
-      todayBtn.addEventListener("click", (ev) => {
-        ev.preventDefault();
+      todayBtn.addEventListener("click", () => {
         onChange(todayKey);
       });
       wrap.appendChild(todayBtn);
@@ -508,7 +505,7 @@
     window.__cg_month = { previousMonthKey, nextMonthKey, currentMonthKey, monthLabel };
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/views/dashboard.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/views/dashboard.js
   function renderDashboard(root) {
     root.innerHTML = "";
     const { selectedMonth: monthKey } = loadUIState();
@@ -524,8 +521,7 @@
     const addBtn = el("button", "fab", "+ A\xF1adir");
     addBtn.type = "button";
     addBtn.setAttribute("aria-label", "A\xF1adir transacci\xF3n");
-    addBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    addBtn.addEventListener("click", () => {
       navigate("add");
     });
     const hamburgerBtn = el("button", "hamburger-btn", "\u2630");
@@ -590,8 +586,7 @@
       empty.appendChild(el("p", "empty-state__title", "A\xFAn no hay movimientos este mes"));
       const cta = el("button", "btn btn--primary empty-state__cta", "+ A\xF1adir transacci\xF3n");
       cta.type = "button";
-      cta.addEventListener("click", (ev) => {
-        ev.preventDefault();
+      cta.addEventListener("click", () => {
         navigate("add");
       });
       empty.appendChild(cta);
@@ -605,8 +600,7 @@
     const menuPanel = createMenuPanel(root);
     screen.appendChild(menuPanel.overlay);
     screen.appendChild(menuPanel.panel);
-    hamburgerBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    hamburgerBtn.addEventListener("click", () => {
       menuPanel.open();
     });
     root.appendChild(screen);
@@ -648,8 +642,7 @@
     }
     const addBudgetBtn = el("button", "budget-add-btn", "+ A\xF1adir presupuesto");
     addBudgetBtn.type = "button";
-    addBudgetBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    addBudgetBtn.addEventListener("click", () => {
       const existingForm = budgetSection.querySelector(".budget-add-form");
       if (existingForm) {
         existingForm.remove();
@@ -685,8 +678,7 @@
     row.appendChild(input);
     const saveBtn = el("button", "budget-add-form__btn", "Guardar");
     saveBtn.type = "button";
-    saveBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    saveBtn.addEventListener("click", () => {
       const catId = select.value;
       if (!catId) return;
       const cents = parseEURInput(input.value);
@@ -730,8 +722,7 @@
     editBtn.type = "button";
     editBtn.textContent = "Editar";
     editBtn.setAttribute("aria-label", `Editar ${cat.name} de ${formatEUR(tx.amountCents)}`);
-    editBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    editBtn.addEventListener("click", () => {
       navigate("edit", { id: tx.id });
     });
     actions.appendChild(editBtn);
@@ -739,8 +730,7 @@
     del.type = "button";
     del.textContent = "Borrar";
     del.setAttribute("aria-label", `Borrar ${cat.name} de ${formatEUR(tx.amountCents)}`);
-    del.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    del.addEventListener("click", () => {
       if (!window.confirm("\xBFBorrar este movimiento?")) return;
       deleteTransaction(tx.id);
       renderDashboard(root);
@@ -830,8 +820,7 @@
     const historySection = el("div", "menu-section");
     const historyLink = el("button", "menu-section__link", "Ver historial mensual");
     historyLink.type = "button";
-    historyLink.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    historyLink.addEventListener("click", () => {
       close();
       navigate("history");
     });
@@ -841,8 +830,7 @@
     const settingsSection = el("div", "menu-section");
     const settingsLink = el("button", "menu-section__link", "Configuraci\xF3n");
     settingsLink.type = "button";
-    settingsLink.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    settingsLink.addEventListener("click", () => {
       close();
       navigate("settings");
     });
@@ -852,8 +840,7 @@
     const dangerSection = el("div", "menu-section");
     const clearBtn = el("button", "menu-section__danger-btn", "Borrar todos los datos");
     clearBtn.type = "button";
-    clearBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    clearBtn.addEventListener("click", () => {
       if (!window.confirm("\xBFEst\xE1s seguro? Se borrar\xE1n TODOS los datos. Esta acci\xF3n no se puede deshacer.")) return;
       localStorage.clear();
       close();
@@ -891,8 +878,7 @@
         const delBtn = el("button", "category-item__delete", "\u2715");
         delBtn.type = "button";
         delBtn.setAttribute("aria-label", `Eliminar ${cat.name}`);
-        delBtn.addEventListener("click", (ev) => {
-          ev.preventDefault();
+        delBtn.addEventListener("click", () => {
           if (!window.confirm(`\xBFEliminar la categor\xEDa "${cat.name}"?`)) return;
           deleteCategory(cat.id);
           renderCategoryList();
@@ -902,15 +888,13 @@
       }
       const restoreBtn = el("button", "category-restore-btn", "Restaurar categor\xEDas por defecto");
       restoreBtn.type = "button";
-      restoreBtn.addEventListener("click", (ev) => {
-        ev.preventDefault();
+      restoreBtn.addEventListener("click", () => {
         restoreHiddenCategories();
         renderCategoryList();
       });
       catList.appendChild(restoreBtn);
     }
-    addCatBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    addCatBtn.addEventListener("click", () => {
       const name = nameInput.value.trim();
       if (!name) return;
       const type = typeSelect.value;
@@ -921,18 +905,16 @@
       nameInput.value = "";
       renderCategoryList();
     });
-    closeBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    closeBtn.addEventListener("click", () => {
       close();
     });
-    overlay.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    overlay.addEventListener("click", () => {
       close();
     });
     return { overlay, panel, open, close };
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/views/add.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/views/add.js
   var categoriesFor = (tipo) => loadAllCategories().filter((c) => tipo === "Gasto" ? c.type === "expense" || c.type === "ambos" : c.type === "income" || c.type === "ambos");
   var newId = () => {
     try {
@@ -951,8 +933,7 @@
     let description = "";
     const screen = h("section", { className: "add-view", "aria-labelledby": "add-title" });
     const back = h("button", { className: "add-view__back", type: "button", "aria-label": "Volver al inicio" }, "\u2190 Atr\xE1s");
-    back.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    back.addEventListener("click", () => {
       navigate("dashboard");
     });
     const title = h("h1", { className: "add-view__title", id: "add-title" }, "A\xF1adir transacci\xF3n");
@@ -967,8 +948,7 @@
     ) {
       const b = h("button", { className: "segmented__option", type: "button", "aria-pressed": opt === tipo ? "true" : "false", dataset: { tipo: opt } }, opt);
       if (opt === tipo) b.classList.add("segmented__option--active");
-      b.addEventListener("click", (ev) => {
-        ev.preventDefault();
+      b.addEventListener("click", () => {
         setTipo(opt);
       });
       seg.appendChild(b);
@@ -996,13 +976,11 @@
     const saveBtn = h("button", { className: "btn btn--primary add-view__save", type: "button" }, "Guardar");
     saveBtn.disabled = true;
     const cancelBtn = h("button", { className: "btn btn--secondary add-view__cancel", type: "button" }, "Cancelar");
-    cancelBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    cancelBtn.addEventListener("click", () => {
       navigate("dashboard");
     });
     form.appendChild(h("div", { className: "add-view__actions" }, [saveBtn, cancelBtn]));
-    saveBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    saveBtn.addEventListener("click", () => {
       if (!saveBtn.disabled) handleSave();
     });
     screen.appendChild(form);
@@ -1108,7 +1086,7 @@
     el4.hidden = false;
   };
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/views/history.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/views/history.js
   function renderHistoryView(root) {
     root.innerHTML = "";
     const allTxs = loadTransactions();
@@ -1119,8 +1097,7 @@
     const back = el2("button", "history-view__back", "\u2190 Atr\xE1s");
     back.type = "button";
     back.setAttribute("aria-label", "Volver al inicio");
-    back.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    back.addEventListener("click", () => {
       navigate("dashboard");
     });
     header.appendChild(back);
@@ -1265,7 +1242,7 @@
     return node;
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/views/edit.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/views/edit.js
   var categoriesFor2 = (tipo) => loadAllCategories().filter((c) => tipo === "Gasto" ? c.type === "expense" || c.type === "ambos" : c.type === "income" || c.type === "ambos");
   function renderEditView(root) {
     root.innerHTML = "";
@@ -1286,8 +1263,7 @@
     let description = tx.description || "";
     const screen = h2("section", { className: "add-view", "aria-labelledby": "edit-title" });
     const back = h2("button", { className: "add-view__back", type: "button", "aria-label": "Volver al inicio" }, "\u2190 Atr\xE1s");
-    back.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    back.addEventListener("click", () => {
       navigate("dashboard");
     });
     const title = h2("h1", { className: "add-view__title", id: "edit-title" }, "Editar transacci\xF3n");
@@ -1302,8 +1278,7 @@
     ) {
       const b = h2("button", { className: "segmented__option", type: "button", "aria-pressed": opt === tipo ? "true" : "false", dataset: { tipo: opt } }, opt);
       if (opt === tipo) b.classList.add("segmented__option--active");
-      b.addEventListener("click", (ev) => {
-        ev.preventDefault();
+      b.addEventListener("click", () => {
         setTipo(opt);
       });
       seg.appendChild(b);
@@ -1331,13 +1306,11 @@
     const saveBtn = h2("button", { className: "btn btn--primary add-view__save", type: "button" }, "Guardar cambios");
     saveBtn.disabled = false;
     const cancelBtn = h2("button", { className: "btn btn--secondary add-view__cancel", type: "button" }, "Cancelar");
-    cancelBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    cancelBtn.addEventListener("click", () => {
       navigate("dashboard");
     });
     form.appendChild(h2("div", { className: "add-view__actions" }, [saveBtn, cancelBtn]));
-    saveBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    saveBtn.addEventListener("click", () => {
       if (!saveBtn.disabled) handleSave();
     });
     screen.appendChild(form);
@@ -1440,7 +1413,7 @@
     el4.hidden = false;
   };
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/views/settings.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/views/settings.js
   function renderSettingsView(root) {
     root.innerHTML = "";
     const screen = el3("section", "settings-view");
@@ -1449,8 +1422,7 @@
     const back = el3("button", "settings-view__back", "\u2190 Atr\xE1s");
     back.type = "button";
     back.setAttribute("aria-label", "Volver al inicio");
-    back.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    back.addEventListener("click", () => {
       navigate("dashboard");
     });
     header.appendChild(back);
@@ -1463,15 +1435,13 @@
     const exportBtns = el3("div", "settings-section__actions");
     const csvBtn = el3("button", "btn btn--secondary", "Exportar CSV");
     csvBtn.type = "button";
-    csvBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    csvBtn.addEventListener("click", () => {
       exportCSV();
     });
     exportBtns.appendChild(csvBtn);
     const jsonBtn = el3("button", "btn btn--secondary", "Exportar JSON");
     jsonBtn.type = "button";
-    jsonBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
+    jsonBtn.addEventListener("click", () => {
       exportJSON();
     });
     exportBtns.appendChild(jsonBtn);
@@ -1731,8 +1701,7 @@
       const saveBtn = el3("button", "budget-config-item__btn", "OK");
       saveBtn.type = "button";
       saveBtn.setAttribute("aria-label", `Guardar presupuesto para ${cat.name}`);
-      saveBtn.addEventListener("click", (ev) => {
-        ev.preventDefault();
+      saveBtn.addEventListener("click", () => {
         const cents = parseEURInput(input.value);
         if (cents === null || cents < 0) return;
         saveBudget(monthKey, cat.id, cents);
@@ -1780,7 +1749,7 @@
     return node;
   }
 
-  // Users/rocan/AppData/Local/Temp/opencode/ahorrio-app/www/js/main.js
+  // Users/rocan/OneDrive/Escritorio/control-gastos/app/js/main.js
   function mount(root, route) {
     if (route.name === "add") {
       renderAddView(root);

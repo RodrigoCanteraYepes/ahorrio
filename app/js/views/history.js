@@ -1,4 +1,4 @@
-// Monthly history view. Shows a bar chart of expenses per month (last 12 months)
+﻿// Monthly history view. Shows a bar chart of expenses per month (last 12 months)
 // and a list of monthly summaries with income, expenses, net, and cumulative savings.
 // Pure render: re-invoke on every route change. ES module.
 
@@ -21,7 +21,7 @@ export function renderHistoryView(root) {
   const back = el("button", "history-view__back", "\u2190 Atr\u00e1s");
   back.type = "button";
   back.setAttribute("aria-label", "Volver al inicio");
-  back.addEventListener("click", (ev) => { ev.preventDefault(); navigate("dashboard"); });
+  back.addEventListener("click", () => { navigate("dashboard"); });
   header.appendChild(back);
   header.appendChild(el("h1", "history-view__title", "Historial mensual"));
   screen.appendChild(header);

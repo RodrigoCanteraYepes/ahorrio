@@ -1,4 +1,4 @@
-// Settings view. Export/Import data + Budget configuration.
+﻿// Settings view. Export/Import data + Budget configuration.
 // Pure render: re-invoke on every route change. ES module.
 
 import { loadAllCategories } from "../categories.js";
@@ -18,7 +18,7 @@ export function renderSettingsView(root) {
   const back = el("button", "settings-view__back", "\u2190 Atr\u00e1s");
   back.type = "button";
   back.setAttribute("aria-label", "Volver al inicio");
-  back.addEventListener("click", (ev) => { ev.preventDefault(); navigate("dashboard"); });
+  back.addEventListener("click", () => { navigate("dashboard"); });
   header.appendChild(back);
   header.appendChild(el("h1", "settings-view__title", "Configuraci\u00f3n"));
   screen.appendChild(header);
@@ -33,12 +33,12 @@ export function renderSettingsView(root) {
   const exportBtns = el("div", "settings-section__actions");
   const csvBtn = el("button", "btn btn--secondary", "Exportar CSV");
   csvBtn.type = "button";
-  csvBtn.addEventListener("click", (ev) => { ev.preventDefault(); exportCSV(); });
+  csvBtn.addEventListener("click", () => { exportCSV(); });
   exportBtns.appendChild(csvBtn);
 
   const jsonBtn = el("button", "btn btn--secondary", "Exportar JSON");
   jsonBtn.type = "button";
-  jsonBtn.addEventListener("click", (ev) => { ev.preventDefault(); exportJSON(); });
+  jsonBtn.addEventListener("click", () => { exportJSON(); });
   exportBtns.appendChild(jsonBtn);
   exportSection.appendChild(exportBtns);
   screen.appendChild(exportSection);
@@ -347,9 +347,7 @@ function renderBudgetConfig(container) {
     const saveBtn = el("button", "budget-config-item__btn", "OK");
     saveBtn.type = "button";
     saveBtn.setAttribute("aria-label", `Guardar presupuesto para ${cat.name}`);
-    saveBtn.addEventListener("click", (ev) => {
-      ev.preventDefault();
-      const cents = parseEURInput(input.value);
+    saveBtn.addEventListener("click", () => { const cents = parseEURInput(input.value);
       if (cents === null || cents < 0) return;
       saveBudget(monthKey, cat.id, cents);
       // Visual feedback
