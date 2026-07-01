@@ -1,6 +1,12 @@
 # Dependencies
 node_modules/
 
+# Build output
+twa-build/.gradle/
+twa-build/app/build/
+twa-build/build/
+twa-build/local.properties
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -9,6 +15,5 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Temp
-verify-tmp/
-*.tmp
+# Logs
+*.log
