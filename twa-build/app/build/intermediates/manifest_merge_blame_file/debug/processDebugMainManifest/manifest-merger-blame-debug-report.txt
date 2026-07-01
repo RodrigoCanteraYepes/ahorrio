@@ -1,0 +1,65 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3    Copyright 2019 Google Inc. All Rights Reserved.
+4
+5     Licensed under the Apache License, Version 2.0 (the "License");
+6     you may not use this file except in compliance with the License.
+7     You may obtain a copy of the License at
+8
+9         http://www.apache.org/licenses/LICENSE-2.0
+10
+11     Unless required by applicable law or agreed to in writing, software
+12     distributed under the License is distributed on an "AS IS" BASIS,
+13     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+14     See the License for the specific language governing permissions and
+15     limitations under the License.
+16-->
+17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+18    package="com.ahorrio.app"
+19    android:versionCode="2"
+20    android:versionName="1.0.0" >
+21
+22    <uses-sdk
+23        android:minSdkVersion="21"
+24        android:targetSdkVersion="35" />
+25
+26    <application
+26-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:20:5-40:19
+27        android:allowBackup="true"
+27-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:21:9-35
+28        android:debuggable="true"
+29        android:extractNativeLibs="true"
+30        android:icon="@mipmap/ic_launcher"
+30-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:22:9-43
+31        android:label="@string/appName"
+31-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:23:9-40
+32        android:supportsRtl="true"
+32-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:24:9-35
+33        android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+33-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:25:9-68
+34        <activity
+34-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:27:9-38:20
+35            android:name="com.ahorrio.app.LauncherActivity"
+35-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:28:13-45
+36            android:alwaysRetainTaskState="true"
+36-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:29:13-49
+37            android:configChanges="orientation|screenSize|keyboardHidden"
+37-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:32:13-74
+38            android:exported="true"
+38-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:31:13-36
+39            android:label="@string/launcherName" >
+39-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:30:13-49
+40            <intent-filter>
+40-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:34:13-37:29
+41                <action android:name="android.intent.action.MAIN" />
+41-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:35:17-69
+41-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:35:25-66
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:36:17-77
+43-->C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:36:27-74
+44            </intent-filter>
+45        </activity>
+46    </application>
+47
+48</manifest>

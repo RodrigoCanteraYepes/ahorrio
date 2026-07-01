@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="shortcut_background">#F5F5F5</color>
+    <string name="appName" translatable="false">Ahorrio</string>
+    <string name="app_name">Ahorrio</string>
+    <string name="launcherName" translatable="false">Ahorrio</string>
+</resources>

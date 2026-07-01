@@ -1,0 +1,60 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:17:1-41:12
+INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:17:1-41:12
+INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:17:1-41:12
+INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:17:1-41:12
+	package
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:18:5-30
+		INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:17:11-69
+application
+ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:20:5-40:19
+INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:20:5-40:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml
+	android:supportsRtl
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:24:9-35
+	android:label
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:23:9-40
+	android:icon
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:22:9-43
+	android:allowBackup
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:21:9-35
+	android:theme
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:25:9-68
+activity#com.ahorrio.app.LauncherActivity
+ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:27:9-38:20
+	android:label
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:30:13-49
+	android:exported
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:31:13-36
+	android:configChanges
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:32:13-74
+	android:alwaysRetainTaskState
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:29:13-49
+	android:name
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:28:13-45
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:34:13-37:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:35:17-69
+	android:name
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:35:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:36:17-77
+	android:name
+		ADDED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml:36:27-74
+uses-sdk
+INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\rocan\OneDrive\Escritorio\control-gastos\twa-build\app\src\main\AndroidManifest.xml

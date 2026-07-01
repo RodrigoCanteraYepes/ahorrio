@@ -1,0 +1,22 @@
+{
+  "name": "ahorrio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "App personal para control de gastos e ingresos",
+  "scripts": {
+    "build": "esbuild app/js/main.js --bundle --outfile=app/js/bundle.js --format=iife --target=es2020 --minify",
+    "dev": "esbuild app/js/main.js --bundle --outfile=app/js/bundle.js --format=iife --target=es2020 --watch",
+    "serve": "python -m http.server 8000 --directory app",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "jsdom": "^29.1.1",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1"
+  }
+}

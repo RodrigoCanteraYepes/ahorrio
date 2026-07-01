@@ -1,0 +1,14 @@
+R_DEF: Internal format may change without notice
+local
+color shortcut_background
+drawable ic_notification_icon
+drawable shortcut_legacy_background
+drawable splash
+mipmap ic_launcher
+mipmap ic_maskable
+raw web_app_manifest
+string appName
+string app_name
+string launcherName
+xml filepaths
+xml shortcuts
